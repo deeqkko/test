@@ -12,6 +12,7 @@ package test;
 public class yadda {
 
     //This is a yadda-yadda classfile
+    //and it's been deployed to main.
     private int yadda;
 
     public int getYadda() {

@@ -15,8 +15,12 @@ public class Test {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        yadda y1 = new yadda();
         // TODO code application logic here
         System.out.println("That was fun wasn't it?");
+        y1.setYadda(3);
+        System.out.println("This yadda is worth " + y1.getYadda());
     }   // Just some yadda-yadda code
+    
     
 }

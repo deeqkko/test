@@ -5,21 +5,62 @@
  */
 package test;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.Socket;
+
 /**
  *
  * @author hamkTeam4/deeqkko
  */
 public class yadda {
+    
+    String sentence;
+    String modifiedSentence;
+    
+    public String getSentence() {
+        return sentence;
+    }
 
-    //This is a yadda-yadda classfile
-    //and it's been deployed to main.
-    private int yadda;
+    public void setSentence(String sentence) {
+        this.sentence = sentence;
+    }
 
-    public int getYadda() {
-        return yadda;
+    public String getModifiedSentence() {
+        return modifiedSentence;
+    }
+
+    public void setModifiedSentence(String modifiedSentence) {
+        this.modifiedSentence = modifiedSentence;
     }
     
-    public void setYadda(int yadda){
-        this.yadda = yadda;
+
+    public yadda() {
     }
+
+    public String sendTCP(String sentence) throws IOException {
+        
+        //Lukee syötteen
+        BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
+
+        try (Socket clientSocket = new Socket("localhost", 6789)) {
+            DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
+            BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            setSentence(sentence); 
+            outToServer.writeBytes(getSentence() + '\n');
+            setModifiedSentence(inFromServer.readLine());
+            clientSocket.close();
+            return modifiedSentence;
+            
+           
+            
+        }
+    }
+    
+    
+
 }
+
+

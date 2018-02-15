@@ -5,7 +5,9 @@
  */
 package test;
 
-import java.util.Calendar;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Scanner;
 
 /**
  *
@@ -15,22 +17,17 @@ public class Test {
 
     /**
      * @param args the command line arguments
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.sql.SQLException
+     * @throws java.io.IOException
      */
-    public static void main(String[] args) {
-        yadda y1 = new yadda();
-        Calendar cal = Calendar.getInstance();
-        
-        // TODO code application logic here
-        System.out.println("That was fun wasn't it?");
-        y1.setYadda(3);
-        System.out.println("This yadda is worth " + y1.getYadda());
-        
-        java.util.Date now = cal.getTime();
-        System.out.println(cal.getTime());
-        java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(now.getTime());
-        System.out.println(currentTimestamp);
-        // Fooling around with a timestamp
-    }   // Just some yadda-yadda code
-    
-    
+    public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
+        yadda foo = new yadda();
+        String teksti = "vajakki";
+        foo.sendTCP(teksti);
+        //System.out.println("Sisään " + foo.getSentence());
+        System.out.println(foo.getModifiedSentence());
+   
 }
+}
+

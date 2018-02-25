@@ -23,9 +23,13 @@ public class Test {
      */
     public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
         yadda foo = new yadda();
-        String teksti = "vajakki";
+        //Aja yhdessä kuti serverin kanssa ja ota kommentit pois testaamasi kyselyn edestä
+        //String teksti = "kyselyTapahtumatByNimi,Jormakka Jorma";
+        //String teksti = "kyselyTapahtumatByID,1001";
+        String teksti = "kyselyNimet";
+        //String teksti = "kyselyUsers";
         foo.sendTCP(teksti);
-        //System.out.println("Sisään " + foo.getSentence());
+        System.out.println("Sisään " + foo.getSentence());
         System.out.println(foo.getModifiedSentence());
    
 }

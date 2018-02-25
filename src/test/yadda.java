@@ -19,6 +19,16 @@ public class yadda {
     
     String sentence;
     String modifiedSentence;
+    int prepField;
+
+    public int getPrepField() {
+        return prepField;
+    }
+
+    public void setPrepField(int prepField) {
+        this.prepField = prepField;
+    }
+    
     
     public String getSentence() {
         return sentence;
@@ -49,6 +59,7 @@ public class yadda {
             DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
             BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             setSentence(sentence); 
+         
             outToServer.writeBytes(getSentence() + '\n');
             setModifiedSentence(inFromServer.readLine());
             clientSocket.close();
